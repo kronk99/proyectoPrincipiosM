@@ -1,0 +1,55 @@
+
+<!-- para el diseño de seleccion del menu -->
+<mat-toolbar color="primary">
+  <button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+  </button>
+</mat-toolbar>
+<!-- Para el sidebar-->
+
+<mat-drawer-container>
+  <!-- Cajón en el lado izquierdo -->
+  <mat-drawer #drawer opened="false" mode="over">
+    <mat-nav-list>
+      <mat-list-item>
+        <button routerLink="reistrotrabajo" mat-button>
+          <mat-icon>checklist</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+          Reportes
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="vistaActivos" mat-button>
+          <mat-icon>menu_book</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+          Préstamo de activos.
+        </button>
+
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="vistaLaboratorios" mat-button>
+          <mat-icon>bar_chart</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+          Reservación de laboratorios
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="vistaDevoluciones" mat-button>
+          <mat-icon>bar_chart</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+          Devolución de activos
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button (click)="logout()" routerLink="/login" mat-button>
+          <mat-icon>power_settings_new</mat-icon> <!-- Agrega el nombre del ícono que desees -->
+          logout
+        </button>
+      </mat-list-item>
+      <!-- Agregar más elementos de lista aquí de ser necesario -->
+    </mat-nav-list>
+  </mat-drawer>
+  <!-- Contenido principal -->
+  <mat-drawer-content>
+    <div style="text-align: center;min-height: 600px;">
+      <router-outlet></router-outlet>
+      <!-- aca se debe de lamar el router-outlet para que funcione -->
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

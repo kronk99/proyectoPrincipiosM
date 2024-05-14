@@ -1,0 +1,21 @@
+<div class="center-container">
+  <mat-card>
+    <mat-card-content class="content-container">
+      <div class="vertical-align">
+        <label>Nombre de usuario</label>
+        <input matInput placeholder="Usuario"  [(ngModel)]="usuarioTextbox">
+        <label>Contraseña</label>
+        <input matInput placeholder="Contraseña" type="password" [(ngModel)]="contrasenaTextbox">
+
+        <button mat-button (click)="verifyLogin()">
+          <mat-icon>bar_chart</mat-icon>
+          Iniciar Sesión
+        </button>
+        <button mat-button (click)="registrarse()">
+          <mat-icon>bar_chart</mat-icon>
+          Registrarse
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
