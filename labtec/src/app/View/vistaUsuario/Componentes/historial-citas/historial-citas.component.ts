@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatButton} from "@angular/material/button";
 import {
   MatCell,
   MatCellDef,
@@ -10,24 +11,25 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatToolbar} from "@angular/material/toolbar";
-
-import {MatButton} from "@angular/material/button";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {FormActivosComponent} from "../form-activos/form-activos.component";
-import {FormDevolucionComponent} from "../form-devolucion/form-devolucion.component";
 import {ComunicationService} from "../../../../Servicios/comunication.service";
-export interface  devolucion{
-  id:number;
-  nombre:string;
-  nombreRegistrado:string;
-  apellidoRegistrado: string;
-  correo: string;
-  fechaSolicitud:string;
+export interface Registros {
+  fecha: string;
+  ingreso: string;
+  salida: string;
+  horasTrabajadas: number
+}
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
 }
 @Component({
-  selector: 'app-devolucion-activos',
+  selector: 'app-historial-citas',
   standalone: true,
   imports: [
+    MatButton,
     MatCell,
     MatCellDef,
     MatColumnDef,
@@ -39,20 +41,16 @@ export interface  devolucion{
     MatRowDef,
     MatTable,
     MatToolbar,
-    MatButton,
     MatHeaderCellDef
   ],
-  templateUrl: './devolucion-activos.component.html',
-  styleUrl: './devolucion-activos.component.css'
+  templateUrl: './historial-citas.component.html',
+  styleUrl: './historial-citas.component.css'
 })
-export class DevolucionActivosComponent {
-  displayedColumns: string[] = ['Id', 'Nombre','nombreRegistrado',
-    'apellidoRegistrado','correo' , 'fechaSolicitud' ,'devolver'];
-  dataSource: devolucion[] = [
-    { id: 1, nombre: 'Juan', nombreRegistrado: 'Juan Pérez', apellidoRegistrado: 'Pérez', correo: 'juan@example.com', fechaSolicitud: '2024-04-29' },
-    { id: 2, nombre: 'María', nombreRegistrado: 'María García', apellidoRegistrado: 'García', correo: 'maria@example.com', fechaSolicitud: '2024-04-30' },
-    { id: 3, nombre: 'Pedro', nombreRegistrado: 'Pedro López', apellidoRegistrado: 'López', correo: 'pedro@example.com', fechaSolicitud: '2024-05-01' },
-  ];
+export class HistorialCitasComponent {
+  displayedColumns: string[] = ["position", "name", "weight", "symbol"];
+  dataSource: PeriodicElement[] = [];//aca se guardan los datos solicitados del servidor
+  //titulos para las columnas;
+  //displayedColumns: string[] = ['Fecha', 'Ingreso','Salida','Horas_trabajadas'];
   mostrarForm(indice:number ,  nombre:string ,correito:string){//la i es de un valor para identificar cual boton fue presionado
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '450px';
@@ -62,7 +60,7 @@ export class DevolucionActivosComponent {
       correo:correito
       //aca falta pasarle la contraseña para que se mande el id del operador.
     };
-    this.matDialog.open(FormDevolucionComponent,dialogConfig);
+    //this.matDialog.open(FormDevolucionComponent,dialogConfig);
     //la linea anterior abre un dialog, que por contenido tendrá lo que haya
     //en formActivosComponent. y el ancho del dialog
   }
@@ -86,5 +84,4 @@ export class DevolucionActivosComponent {
       }
     );
   }
-
 }

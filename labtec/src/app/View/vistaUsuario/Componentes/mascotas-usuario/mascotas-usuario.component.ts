@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import {NgFor} from "@angular/common";
-import {NgIf} from "@angular/common";
-import {MatCard, MatCardContent} from "@angular/material/card";
-import {MatIcon} from "@angular/material/icon";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {FormActivosComponent} from "../form-activos/form-activos.component";
-import {MatButton} from "@angular/material/button";
-import {MatToolbar} from "@angular/material/toolbar";
 import {ComunicationService} from "../../../../Servicios/comunication.service";
-
+import {NgForOf} from "@angular/common";
+import {MatCard, MatCardContent} from "@angular/material/card";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatButton} from "@angular/material/button";
 export interface Activo { //creo una interfaz que se puede exportar,
-  //con esto leo todos los elementos que existen en
+                          //con esto leo todos los elementos que existen en
   id: string; //el id
   name: string;//el nombre
   description: string; //la descripción
@@ -18,15 +15,19 @@ export interface Activo { //creo una interfaz que se puede exportar,
   cedulaa:string;
 }
 @Component({
-  selector: 'app-vista-activos',
+  selector: 'app-mascotas-usuario',
   standalone: true,
-    imports: [
-        NgFor, NgIf, MatCard, MatCardContent, MatIcon, MatButton, MatToolbar
-    ],
-  templateUrl: './vista-activos.component.html',
-  styleUrl: './vista-activos.component.css'
+  imports: [
+    NgForOf,
+    MatCardContent,
+    MatToolbar,
+    MatButton,
+    MatCard
+  ],
+  templateUrl: './mascotas-usuario.component.html',
+  styleUrl: './mascotas-usuario.component.css'
 })
-export class VistaActivosComponent {
+export class MascotasUsuarioComponent {
   activosRecibidos: Activo[] = []; //archivo que recibe una lista
   //de activos del cliente
   //logica para recibir cosas del servidor
@@ -84,5 +85,5 @@ export class VistaActivosComponent {
 // Para cerrar el modal
 
 //metodo ngOninit , ejecuta al inicio
-}
 
+}

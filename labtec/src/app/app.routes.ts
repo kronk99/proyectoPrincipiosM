@@ -1,22 +1,24 @@
 import { Routes } from '@angular/router';
-import {SidenavComponent} from "./View/vistaOperador/Componentes/sidenav/sidenav.component";
-import {LoginComponent} from "./View/vistaOperador/Componentes/login/login.component";
-import {RegistroTrabajoComponent} from "./View/vistaOperador/Componentes/registro-trabajo/registro-trabajo.component";
-import {VistaActivosComponent} from "./View/vistaOperador/Componentes/vista-activos/vista-activos.component";
+import {SidenavComponent} from "./View/vistaUsuario/Componentes/sidenav/sidenav.component";
+import {LoginComponent} from "./View/vistaUsuario/Componentes/login/login.component";
+
+import {RegisterComponent} from "./View/vistaUsuario/Componentes/register/register.component";
+import {MascotasUsuarioComponent} from "./View/vistaUsuario/Componentes/mascotas-usuario/mascotas-usuario.component";
+import {HistorialCitasComponent} from "./View/vistaUsuario/Componentes/historial-citas/historial-citas.component";
+import {ExpedienteMedicoComponent} from "./View/vistaUsuario/Componentes/expediente-medico/expediente-medico.component";
 import {
-  VistaLaboratoriosComponent
-} from "./View/vistaOperador/Componentes/vista-laboratorios/vista-laboratorios.component";
-import {DevolucionActivosComponent} from "./View/vistaOperador/Componentes/devolucion-activos/devolucion-activos.component";
-import {RegisterComponent} from "./View/vistaOperador/Componentes/register/register.component";
+  ProductosFarmaciaComponent
+} from "./View/vistaUsuario/Componentes/productos-farmacia/productos-farmacia.component";
 
 export const routes: Routes = [
   {path: 'sidenav', component: SidenavComponent,
-    children:[{path: 'reistrotrabajo',component: RegistroTrabajoComponent},
-      {path: 'vistaActivos',component: VistaActivosComponent},
-      {path:'vistaLaboratorios',component: VistaLaboratoriosComponent},
-      {path:'vistaDevoluciones',component: DevolucionActivosComponent}
+    children:[{path: 'hcitas',component: HistorialCitasComponent},
+      {path: 'mascotasUsuario',component:MascotasUsuarioComponent},
+      {path:'expMedico',component: ExpedienteMedicoComponent},
+      {path:'prodFarma',component: ProductosFarmaciaComponent}
     ]},
   {path: 'login', component: LoginComponent},
+
   {path: 'register', component: RegisterComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   //{path: 'vistaActivos',component: VistaActivosComponent}

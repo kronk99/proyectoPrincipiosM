@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormDevolucionComponent } from './form-devolucion.component';
+import { HistorialCitasComponent } from './historial-citas.component';
 
-describe('FormDevolucionComponent', () => {
-  let component: FormDevolucionComponent;
-  let fixture: ComponentFixture<FormDevolucionComponent>;
+describe('HistorialCitasComponent', () => {
+  let component: HistorialCitasComponent;
+  let fixture: ComponentFixture<HistorialCitasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormDevolucionComponent]
+      imports: [HistorialCitasComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FormDevolucionComponent);
+    fixture = TestBed.createComponent(HistorialCitasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
