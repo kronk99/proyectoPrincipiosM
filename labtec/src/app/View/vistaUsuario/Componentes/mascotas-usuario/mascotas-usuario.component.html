@@ -1,25 +1,25 @@
 <!---->
 <div class="container mt-5">
   <mat-toolbar>
-    <span style="margin-right: auto;">Activos disponibles</span>
+    <span style="margin-right: auto;">Mascotas del usuario</span>
     <div class="contenedorBotones">
-      <button   mat-raised-button (click)="mostrarActivos()" class="contenedorBot4" >
-        mostrar reportes
+      <button   mat-raised-button class="contenedorBot4" >
+        ver mis mascotas
       </button>
     </div>
   </mat-toolbar>
   <div class="row">
-    <div class="col-4" *ngFor="let activo of activosRecibidos; let i = index">
+    <div class="col-4" *ngFor="let mascota of mascotasRecibidas; let i = index">
       <mat-card>
         <mat-card-content>
           <div fxLayout="row">
             <div fxFlex="40%">
-              <img [src]="activo.imageURL" class="imagen-contenedor" alt="notfout">
-              <p class="">{{activo.name}}</p>
+              <img [src]="mascota.imageURL" class="imagen-contenedor" alt="notfout">
+              <p class="">{{mascota.name}}</p>
             </div>
             <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
-              <h4 class="">{{activo.description}}</h4>
-              <button mat-raised-button color="primary" (click)="mostrarForm(i)">Reservar</button>
+              <h4 class="">{{mascota.description}}</h4>
+              <button mat-raised-button color="primary" >información adicional</button>
             </div>
           </div>
         </mat-card-content>

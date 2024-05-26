@@ -4,7 +4,7 @@ import {
   MatCell,
   MatCellDef,
   MatColumnDef,
-  MatHeaderCell,
+  MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
   MatHeaderRowDef,
   MatRow, MatRowDef, MatTable
@@ -13,8 +13,13 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ComunicationService} from "../../../../Servicios/comunication.service";
-export interface devolucion{
-
+export interface Expediente {
+  fecha: string;
+  mascota: string;
+  doctor: string;
+  medicamento: string;
+  procedimiento:string;
+  detalle:string;
 }
 
 @Component({
@@ -32,17 +37,49 @@ export interface devolucion{
     MatRow,
     MatRowDef,
     MatTable,
-    MatToolbar
+    MatToolbar,
+    MatHeaderCellDef
   ],
   templateUrl: './expediente-medico.component.html',
   styleUrl: './expediente-medico.component.css'
 })
 export class ExpedienteMedicoComponent {
 
-  displayedColumns: string[] = ['Id', 'Nombre','nombreRegistrado',
-    'apellidoRegistrado','correo' , 'fechaSolicitud' ,'devolver'];
-  dataSource: devolucion[] = [
-  ];
+  displayedColumns: string[] = ["fecha", "mascota", "doctor","medicamento","procedimiento","detalle"];
+  dataSource: Expediente[] = [
+    {
+      fecha: "2024-05-26",
+      mascota: "Max",
+      doctor: "Dr. Rodríguez",
+      medicamento: "Paracetamol",
+      procedimiento: "Vacunación",
+      detalle: "Vacuna contra la rabia"
+    },
+    {
+      fecha: "2024-05-28",
+      mascota: "Luna",
+      doctor: "Dr. Pérez",
+      medicamento: "Ivermectina",
+      procedimiento: "Desparasitación",
+      detalle: "Dosis única oral"
+    },
+    {
+      fecha: "2024-06-02",
+      mascota: "Bobby",
+      doctor: "Dr. Gómez",
+      medicamento: "Amoxicilina",
+      procedimiento: "Tratamiento",
+      detalle: "Dolor de estómago"
+    },
+    {
+      fecha: "2024-06-05",
+      mascota: "Lucky",
+      doctor: "Dr. Sánchez",
+      medicamento: "Prednisona",
+      procedimiento: "Terapia",
+      detalle: "Inflamación en la piel"
+    }
+  ]
   mostrarForm(indice:number ,  nombre:string ,correito:string){//la i es de un valor para identificar cual boton fue presionado
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '450px';

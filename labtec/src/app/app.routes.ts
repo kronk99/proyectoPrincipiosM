@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import {SidenavComponent} from "./View/vistaUsuario/Componentes/sidenav/sidenav.component";
 import {LoginComponent} from "./View/vistaUsuario/Componentes/login/login.component";
-
 import {RegisterComponent} from "./View/vistaUsuario/Componentes/register/register.component";
 import {MascotasUsuarioComponent} from "./View/vistaUsuario/Componentes/mascotas-usuario/mascotas-usuario.component";
 import {HistorialCitasComponent} from "./View/vistaUsuario/Componentes/historial-citas/historial-citas.component";

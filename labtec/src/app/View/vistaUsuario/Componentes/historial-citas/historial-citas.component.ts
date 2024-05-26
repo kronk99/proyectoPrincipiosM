@@ -13,11 +13,10 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ComunicationService} from "../../../../Servicios/comunication.service";
-export interface Registros {
+export interface Citas {
   fecha: string;
-  ingreso: string;
-  salida: string;
-  horasTrabajadas: number
+  mascota: string;
+  doctor: string;
 }
 export interface PeriodicElement {
   name: string;
@@ -47,10 +46,67 @@ export interface PeriodicElement {
   styleUrl: './historial-citas.component.css'
 })
 export class HistorialCitasComponent {
-  displayedColumns: string[] = ["position", "name", "weight", "symbol"];
-  dataSource: PeriodicElement[] = [];//aca se guardan los datos solicitados del servidor
+  displayedColumns: string[] = ["fecha", "mascota", "doctor"];
+  dataSource: Citas[] = [
+    {
+      fecha: "2024-05-26",
+      mascota: "Max",
+      doctor: "Dr. Rodríguez"
+    },
+    {
+      fecha: "2024-05-28",
+      mascota: "Luna",
+      doctor: "Dr. Pérez"
+    },
+    {
+      fecha: "2024-06-02",
+      mascota: "Bobby",
+      doctor: "Dr. Gómez"
+    },
+    {
+      fecha: "2024-06-05",
+      mascota: "Lucky",
+      doctor: "Dr. Sánchez"},
+    {
+      fecha: "2024-06-10",
+      mascota: "Rocky",
+      doctor: "Dra. Martínez"
+    },
+    {
+      fecha: "2024-06-15",
+      mascota: "Coco",
+      doctor: "Dr. Fernández"
+    },
+    {
+      fecha: "2024-06-20",
+      mascota: "Bella",
+      doctor: "Dra. García"
+    },
+    {
+      fecha: "2024-06-25",
+      mascota: "Max",
+      doctor: "Dr. López"
+    },
+    {
+      fecha: "2024-07-01",
+      mascota: "Charlie",
+      doctor: "Dra. Ramírez"
+    },
+    {
+      fecha: "2024-07-05",
+      mascota: "Simba",
+      doctor: "Dr. González"
+    },
+    {
+      fecha: "2024-07-10",
+      mascota: "Luna",
+      doctor: "Dra. Soto"
+    }
+
+  ];//aca se guardan los datos solicitados del servidor
   //titulos para las columnas;
   //displayedColumns: string[] = ['Fecha', 'Ingreso','Salida','Horas_trabajadas'];
+
   mostrarForm(indice:number ,  nombre:string ,correito:string){//la i es de un valor para identificar cual boton fue presionado
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '450px';
@@ -67,6 +123,7 @@ export class HistorialCitasComponent {
   //constructor de la clase
   constructor(private servicio:ComunicationService,private matDialog:MatDialog) { //se inyecta matdialog al constructor
   }
+
   //metodo que solicita los activos disponibles del usuario en la bd
   mostrarActivos(){
     //este get se le manda el username o id del operador para traer los datos de la
