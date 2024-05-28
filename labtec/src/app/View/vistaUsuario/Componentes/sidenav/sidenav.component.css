@@ -1,0 +1,12 @@
+.custom-background {
+  background-color: #E07B4F; /* Color de fondo deseado */
+  color: white !important; /* Color del texto */
+}
+.custom-background2 {
+  background-color: red; /* Color de fondo deseado */
+  color: white !important; /* Color del texto */
+}
+.custom-background-drawer {
+  background-color: #1A485B; /* Color de fondo deseado */
+  color: white; /* Color del texto */
+}

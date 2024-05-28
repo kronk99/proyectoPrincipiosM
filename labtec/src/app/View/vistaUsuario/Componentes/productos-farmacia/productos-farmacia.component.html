@@ -1,24 +1,24 @@
 <div class="container mt-5">
-  <mat-toolbar>
+  <mat-toolbar  class="custom-background3">
     <span style="margin-right: auto;">Articulos de farmacia</span>
     <div class="contenedorBotones">
-      <button   mat-raised-button  class="contenedorBot4" >
+      <button   mat-raised-button   class="custom-background"  >
         Mostrar articulos
       </button>
-      <button   mat-raised-button  class="contenedorBot4" >
+      <button   mat-raised-button   class="custom-background" >
         Ordenar por precio
       </button>
-      <button   mat-raised-button  class="contenedorBot4" >
+      <button   mat-raised-button   class="custom-background" >
         Ordenar por nombre
       </button>
-      <button   mat-raised-button  class="contenedorBot4" >
+      <button   mat-raised-button   class="custom-background" >
         mi carrito
       </button>
     </div>
   </mat-toolbar>
   <div class="row">
     <div class="col-4" *ngFor="let producto of productosRecibidos; let i = index">
-      <mat-card>
+      <mat-card class="custom-background2" >
         <mat-card-content>
           <div fxLayout="row">
             <div fxFlex="40%">
@@ -27,7 +27,7 @@
             </div>
             <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
               <h4 class="">{{producto.description}}</h4>
-              <button mat-raised-button color="primary" >Añadir al carrito</button>
+              <button mat-raised-button color="accent" >Añadir al carrito</button>
             </div>
           </div>
         </mat-card-content>

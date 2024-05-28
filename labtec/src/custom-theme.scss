@@ -8,15 +8,41 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
+//definicion de la paleta especificada por el profe
+$custom-primary-palette: (
+  50: #ffffff,
+  100: #4D7381,//color prestablecido azul claro
+  200: #FFC7A7,//naranja claro
+  300: #E07B4F,//naranja oscuro
+  400: #5c8ec5,
+  500: #1a485b, // azul oscuro
+  600: #17404f,
+  700: #133944,
+  800: #0f2f38,
+  900: #0b272d,
 
+  contrast: (
+    50: #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+
+  )
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$labtec-primary: mat.define-palette(mat.$indigo-palette);
-$labtec-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
+$labtec-primary: mat.define-palette($custom-primary-palette,500);//azul oscuro
+$labtec-accent: mat.define-palette($custom-primary-palette,200);//naranja oscuro
+$labtec-background: mat.define-palette($custom-primary-palette,100); //azul claro
 // The warn palette is optional (defaults to red).
-$labtec-warn: mat.define-palette(mat.$red-palette);
+$labtec-warn: mat.define-palette($custom-primary-palette,300);//naranja claro
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -25,6 +51,7 @@ $labtec-theme: mat.define-light-theme((
     primary: $labtec-primary,
     accent: $labtec-accent,
     warn: $labtec-warn,
+    background:$labtec-background
   ),
   typography: mat.define-typography-config(),
   density: 0

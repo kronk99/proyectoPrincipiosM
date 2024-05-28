@@ -1,0 +1,7 @@
+.custom-background {
+  background-color: #FFC7A7; /* Cambia este valor al color que desees */
+}
+.custom-background2 {
+  background-color: #E07B4F; /* Color de fondo deseado */
+  color: white !important; /* Color del texto */
+}
