@@ -8,13 +8,15 @@ import {ExpedienteMedicoComponent} from "./View/vistaUsuario/Componentes/expedie
 import {
   ProductosFarmaciaComponent
 } from "./View/vistaUsuario/Componentes/productos-farmacia/productos-farmacia.component";
+import {HistorialComprasComponent} from "./View/vistaUsuario/Componentes/historial-compras/historial-compras.component";
 
 export const routes: Routes = [
   {path: 'sidenav', component: SidenavComponent,
     children:[{path: 'hcitas',component: HistorialCitasComponent},
       {path: 'mascotasUsuario',component:MascotasUsuarioComponent},
       {path:'expMedico',component: ExpedienteMedicoComponent},
-      {path:'prodFarma',component: ProductosFarmaciaComponent}
+      {path:'prodFarma',component: ProductosFarmaciaComponent},
+      {path:'facturas',component: HistorialComprasComponent}
     ]},
   {path: 'login', component: LoginComponent},
 

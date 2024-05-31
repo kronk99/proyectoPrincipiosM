@@ -5,6 +5,9 @@
       <button   mat-raised-button  class="custom-background" >
         mostrar citas
       </button>
+      <button   mat-raised-button  class="custom-background" (click)="solicitarCita()" >
+        solicitar cita
+      </button>
     </div>
   </mat-toolbar>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -27,7 +30,18 @@
       <td mat-cell *matCellDef="let element"> {{element.doctor}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> estado de la cita</th>
+      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
     <!-- Symbol Column -->
+    <ng-container matColumnDef="cancelar">
+      <th mat-header-cell *matHeaderCellDef>Cancelar cita</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="cancelarCita()" class="custom-background">Cancelar</button>
+      </td>
+    </ng-container>
 
     <!-- Define header row -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

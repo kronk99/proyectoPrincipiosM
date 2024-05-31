@@ -1,40 +1,42 @@
 <button mat-icon-button  mat-dialog-close style="float:right;margin:5px">
   <mat-icon >close </mat-icon>
 </button>
-<mat-dialog-content>
+<mat-dialog-content class="custom-dialog-content">
   <header>
     <h1>
-      Reservación de activo
+      Reservación de citas
     </h1>
   </header>
-  <p>
-    <mat-form-field style="display: flex;">
-      <input matInput placeholder="nombre del activo" [value]="data.nombreActivo" readonly style="flex: 1;">
-      <input matInput placeholder="Id" [value]="data.idActivo" readonly style="flex: 1;">
-    </mat-form-field>
-  </p>
-  <p><mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="onToggleChange($event)" [value]="false">
-    <mat-button-toggle value="false">Estudiante</mat-button-toggle>
-    <mat-button-toggle value="true">Profesor</mat-button-toggle>
-  </mat-button-toggle-group></p>
   <p><mat-form-field>
     <input matInput placeholder="nombre del solicitante" [(ngModel)]="nombreTextbox">
   </mat-form-field></p>
+
   <p><mat-form-field>
-    <input matInput placeholder="Apellido del solicitante" [(ngModel)]="apellidoTextbox">
+    <input matInput placeholder="Nombre de la mascota" [(ngModel)]="nombreMascota">
   </mat-form-field></p>
+
   <p><mat-form-field>
-    <input matInput placeholder="Correo del solicitante" [(ngModel)]="correoTextbox">
+    <input matInput placeholder="fecha para agendar" [(ngModel)]="fechaTextbox">
   </mat-form-field></p>
-  <p><mat-form-field *ngIf="profesorSeleccionado">
-    <input matInput placeholder="contraseña del profesor" type="password" [(ngModel)]="contrasenaTextbox">
-  </mat-form-field></p>
-  <label *ngIf="!profesorSeleccionado">Requiere de la aprobación de:</label>
-  <label *ngIf="!profesorSeleccionado">{{ data.nombreActivo }}</label>
+  <mat-label>Fecha para agendar</mat-label>
+  <p>
+    <mat-form-field>
+    <mat-select placeholder="Tipo de cita" [(ngModel)]="citaTextbox">
+      <mat-option value="Cirugia">Cirugía</mat-option>
+      <mat-option value="RevisionGeneral">Revision general</mat-option>
+      <mat-option value="Corte">Corte de pelo</mat-option>
+      <mat-option value="Vacunación">Vacunación</mat-option>
+      <!-- Agrega más opciones según sea necesario -->
+    </mat-select>
+  </mat-form-field>
+  </p>
+
+
+
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-raised-button color="primary"  (click)="realizarReserva()" [disabled]="!banderaparaenviar">
-    Solicitar prestamo
+<mat-dialog-actions align="end" class="custom-dialog-content">
+  <button mat-raised-button color="warn"  (click)="realizarReserva()" >
+    Solicitar cita
   </button>
   <button mat-raised-button color="warn" mat-dialog-close>
     cancelar
