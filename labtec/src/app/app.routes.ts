@@ -9,6 +9,7 @@ import {
   ProductosFarmaciaComponent
 } from "./View/vistaUsuario/Componentes/productos-farmacia/productos-farmacia.component";
 import {HistorialComprasComponent} from "./View/vistaUsuario/Componentes/historial-compras/historial-compras.component";
+import {TiendaComponent} from "./View/vistaUsuario/Componentes/tienda/tienda.component";
 
 export const routes: Routes = [
   {path: 'sidenav', component: SidenavComponent,
@@ -19,6 +20,7 @@ export const routes: Routes = [
       {path:'facturas',component: HistorialComprasComponent}
     ]},
   {path: 'login', component: LoginComponent},
+  {path: 'tienda', component: TiendaComponent},
 
   {path: 'register', component: RegisterComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},

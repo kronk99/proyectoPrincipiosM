@@ -1,0 +1,32 @@
+<!---->
+<div class="container mt-5">
+  <mat-toolbar  class="custom-background3" >
+    <span style="margin-right: auto;">Productos que ofrecemos</span>
+    <div class="contenedorBotones">
+      <button   mat-raised-button   class="custom-background"  >
+        Ver productos disponibles
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="row">
+    <div class="col-4" *ngFor="let mascota of mascotasRecibidas; let i = index">
+      <mat-card  class="custom-background2" >
+        <mat-card-content>
+          <div fxLayout="row">
+            <div fxFlex="40%">
+              <img [src]="mascota.imageURL" class="imagen-contenedor" alt="notfout">
+              <p class="">{{mascota.name}}</p>
+            </div>
+            <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
+              <h4 class="">{{mascota.description}}</h4>
+              <button mat-raised-button color="accent" >información adicional</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<!-- para abrir el modal-->
+<!-- Agrega este componente modal dentro del template de tu componente Angular -->
+
