@@ -3,6 +3,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthService} from "../../../../Servicios/auth.service"
+import {ComunicationService} from "../../../../Servicios/comunication.service";
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -18,20 +19,21 @@ export class LoginComponent {
     username: ["", Validators.required],
     password: ["", Validators.required],
   });
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router){}
+  constructor(private servicio: ComunicationService,private authService: AuthService, private fb: FormBuilder, private router: Router){}
 
   login(){
-    let user = this.authService.login(
-      this.form.value.username,
-      this.form.value.password
-    );
+    this.servicio.verifyLogin(this.form.value.username,this.form.value.password).subscribe(
+      response => {
+        console.log('Datos enviados al servidor:', response);
+        this.servicio.setUsuarioId(this.form.value.username);
+        this.router.navigateByUrl("/sidenav");
+      },
+      error => {
+        console.error('Error al enviar datos al servidor:', error);
+        alert("Usuario o contraseña invalida");
 
-    if (!user) {
-      alert("Usuario o contraseña invalida");
-    } else
-    {
-      this.router.navigateByUrl("/admin");
-    }
+      }
+    );
   }
   PasswordAlert(){
     alert("Para cambiar contraseña, dirigase a una sucursal para realizarlo")

@@ -36,24 +36,31 @@ export class ComunicationService {
   getaprobarSolicitud(username:string): Observable<any> {
     return this.http.get<any>(`${this.servidorURL}/getsolAprob?username=${username}`);
   }
-  //COMPLETADA****
+  //métodos para el login
   verifyLogin(Correo: string , Contrasena: string): Observable<any> {
-    return this.http.get<any>(`${this.servidorURL}/Loginop/verificarLogin?correo=${Correo}&contrasena=${Contrasena}`);
+    return this.http.get<any>(`${this.servidorURL}/verificarLogin?correo=${Correo}&contrasena=${Contrasena}`);
   }
-  //metodo del servicio que le envia la información del usuario y la contraseña
-  //y verifica si es correcta
+  //fin de los metodos para el login..
 
-  //POST****************************************************************
-
-  //solicitud reserva activos estudiantes.
-  solicitarReserva(reservaEdata: any): Observable<any> {
+  //****METODOS PARA LAS CITAS DE USUARIO*****
+  getCitas(Usuario: string ): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getCitas?id=${Usuario}`);
+  }
+  deleteCita(reservaEdata: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<any>(`${this.servidorURL}/Prestamos`, reservaEdata,httpOptions);
+    return this.http.post<any>(`${this.servidorURL}/deleteCitas`, reservaEdata,httpOptions);
   }
+
+  //FIN METODOS CITAS USUARIOS*******
+
+  //POST****************************************************************
+
+  //solicitud reserva activos estudiantes.
+
   //solicitud reserva para profesores
   solicitarReservaP(reservaPdata: any): Observable<any> {
     const httpOptions = {

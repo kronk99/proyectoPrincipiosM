@@ -54,6 +54,7 @@ export class FormActivosComponent {
   //metodo para realizar las reservas a la base de datos:
   realizarReserva(){
 
+
   }
 
 

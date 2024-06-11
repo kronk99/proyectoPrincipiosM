@@ -45,24 +45,6 @@ export interface Citas {
 export class HistorialCitasComponent {
   displayedColumns: string[] = ["fecha", "mascota", "doctor" ,"estado", "cancelar"];
   dataSource: Citas[] = [
-    {
-      "fecha": "2024-05-30",
-      "mascota": "Rex",
-      "doctor": "Dr. Pérez",
-      "estado": "Programada"
-    },
-    {
-      "fecha": "2024-06-10",
-      "mascota": "Luna",
-      "doctor": "Dra. Gómez",
-      "estado": "Confirmada"
-    },
-    {
-      "fecha": "2024-07-15",
-      "mascota": "Max",
-      "doctor": "Dr. Rodríguez",
-      "estado": "Cancelada"
-    }
 
   ];//aca se guardan los datos solicitados del servidor
   //titulos para las columnas;
@@ -81,10 +63,10 @@ export class HistorialCitasComponent {
   }
 
   //metodo que solicita los activos disponibles del usuario en la bd
-  mostrarActivos(){
+  mostrarCitas(){
     //este get se le manda el username o id del operador para traer los datos de la
     //bd
-    this.servicio.getaprobarSolicitud("hola").subscribe(
+    this.servicio.getCitas(this.servicio.getUsuarioId()).subscribe(
       response => {
         console.log('Datos enviados al servidor:', response);
 
@@ -97,5 +79,25 @@ export class HistorialCitasComponent {
       }
     );
   }
-  cancelarCita(){}
+  cancelarCita(fechaa:string,mascotaa:string,doctoor:string,estadoo:string){
+    const datatoSend1 = {
+      usuario: this.servicio.getUsuarioId(),
+      fecha: fechaa,
+      mascota: mascotaa,
+      doctor:doctoor,
+      estado:estadoo
+    }
+    this.servicio.deleteCita(datatoSend1).subscribe(
+      response => {
+        console.log('Datos enviados al servidor:', response);
+        console.error('Se recibe:', response);
+        //recibida del servidor.
+      },
+      error => {
+        console.error('Error al enviar datos al servidor:', error);
+        // Maneja el error adecuadamente aquí
+      }
+    );
+
+  }
 }
