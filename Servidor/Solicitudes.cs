@@ -8,69 +8,41 @@ namespace Tiposdeplatos
     
     [ApiController] //define a la clase de abajo como controlador
     //de api aspnetcore
-    [Route("labTec")]//define las rutas hacia donde hacer las solicitudes
+    [Route("api")]//define las rutas hacia donde hacer las solicitudes
     //get, set etc, comienzan con esto
     
     public class solicitudes:ControllerBase{
         [HttpGet]//definición de los metodos httpget 
-
-        [Route("getActivos")] //ruta getActivos, obtiene la lista
+        [Route("getCitas")] //ruta getActivos, obtiene la lista
         //de todos los activos disponibles
-        public ActionResult<IEnumerable<activosTemplate>> Get(){//obtiene
+        public ActionResult<IEnumerable<citasTemplate>> Get(string id)
+        {//obtiene
         //del servidor
-            string filePath = "activos.json";
-            string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
-            List<activosTemplate> registros;
-            registros = JsonConvert.DeserializeObject<List<activosTemplate>>(jsonText);      
-            IEnumerable<activosTemplate> activos = registros;
-            return Ok(activos);
-            //hay que mandarselo directamente como un json serializado
-            //consultar si esto lo manda como string o como json
+            string filePath = "citas.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            Dictionary<string, List<citasTemplate>> citasPorUsuario = JsonConvert.DeserializeObject<Dictionary<string, List<citasTemplate>>>(jsonText);
+
+            if (citasPorUsuario.ContainsKey(id))
+            {
+                List<citasTemplate> citasDelUsuario = citasPorUsuario[id];
+                return Ok(citasDelUsuario);
+            }
+            else
+            {
+                return NotFound(); // Devuelve 404 si el usuario no tiene citas
+            }
         }
-        [Route("getReportes")]
-        //metodo para obtener los reportes del usuario Operador
-        public ActionResult <IEnumerable<reporteopTemplate>> getReporte(string username){
-            //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);
-            //Console.Write(nuevoplatillo.Tipo);
-            string filePath = "reportes.json";
-            string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
-            List<reporteopTemplate> reportes = JsonConvert.DeserializeObject<List<reporteopTemplate>>(jsonText);       
-            IEnumerable<reporteopTemplate> reportesUsuario = reportes.Where(u => u.usuario == username);
-            return Ok(reportesUsuario);
-        }
-        [HttpPost]//para los post de operadores
-        //ruta para verificar el login del usuario.
-        [Route("verificarLogin")]
-        public ActionResult comprobarLogin([FromBody] loginTemplate nuevoLogin){
+        [Route("verificarLogin")] //metodo que verifica el login de usuario
+        public ActionResult<bool> ComprobarLogin(string correo, string contrasena){
             //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);
             //Console.Write(nuevoplatillo.Tipo);
             string filePath = "login.json";
             string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
             List<loginTemplate> registros = JsonConvert.DeserializeObject<List<loginTemplate>>(jsonText);
-            loginTemplate usuario = registros.FirstOrDefault(u => u.correo ==nuevoLogin.correo); 
-            bool valorReturn = verificarCredenciales(usuario,nuevoLogin.contrasena );
+            loginTemplate usuario = registros.FirstOrDefault(u => u.correo ==correo); 
+            bool valorReturn = verificarCredenciales(usuario,contrasena);
             Console.WriteLine("valor del login:",valorReturn);
             return Ok(valorReturn);
-        }
-        [Route("reservactivoEst")]
-        public ActionResult reservactivoEstu([FromBody] reservstudTemplate nuevaReserva){
-            //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);
-            //Console.Write(nuevoplatillo.Tipo);
-            string filePath = "reservasE.json";
-            string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
-            List<reservstudTemplate> reservas = JsonConvert.DeserializeObject<List<reservstudTemplate>>(jsonText);
-            reservas.Add(nuevaReserva);
-            return Ok(true);
-        }
-        [Route("reservactivoProf")]
-        public ActionResult reservactivoProfe([FromBody] reservprofTemplate nuevaReserva){
-            //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);
-            //Console.Write(nuevoplatillo.Tipo);
-            string filePath = "reservasP.json";
-            string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
-            List<reservprofTemplate> reservas = JsonConvert.DeserializeObject<List<reservprofTemplate>>(jsonText);
-            reservas.Add(nuevaReserva);
-            return Ok(true);
         }
         public bool verificarCredenciales(loginTemplate usuario ,string password){
             if(usuario != null){//si el usuario existe
@@ -93,6 +65,34 @@ namespace Tiposdeplatos
                 return false;
             }
         }
-       
+        [HttpPost]
+        [Route("deleteCitas")]
+        public ActionResult<bool> borrarCita([FromBody] citasTemplate citaABorrar){
+            string filePath = "citas.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            Dictionary<string, List<citasTemplate>> citasPorUsuario = JsonConvert.DeserializeObject<Dictionary<string, List<citasTemplate>>>(jsonText);
+
+            if (citasPorUsuario.ContainsKey(citaABorrar.usuario)){
+                List<citasTemplate> citasDelUsuario = citasPorUsuario[citaABorrar.usuario];
+                citasTemplate citaEncontrada = citasDelUsuario.FirstOrDefault(c => c.fecha == citaABorrar.fecha &&
+                c.mascota == citaABorrar.mascota && c.doctor == citaABorrar.doctor &&
+                c.estado == citaABorrar.estado);
+                if (citaEncontrada != null){
+                    citasDelUsuario.Remove(citaEncontrada);
+                    // Guarda los cambios en el archivo JSON
+                    string updatedJsonText = JsonConvert.SerializeObject(citasPorUsuario, Formatting.Indented);
+                    System.IO.File.WriteAllText(filePath, updatedJsonText);
+                    return Ok(true); // Devuelve true si la cita se borró exitosamente
+                }
+                else
+                {
+                    return NotFound(); // Devuelve 404 si la cita no fue encontrada
+                }
+            }
+            else
+            {
+                return NotFound(); 
+            }
+       }
     }
 }

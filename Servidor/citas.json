@@ -1,0 +1,27 @@
+{
+  "pedro@example.com": [
+    {
+      "usuario": null,
+      "fecha": "2024-06-15",
+      "mascota": "Luna",
+      "doctor": "Dr. García",
+      "estado": "Pendiente"
+    }
+  ],
+  "otroUsuario": [
+    {
+      "usuario": null,
+      "fecha": null,
+      "mascota": "Rex",
+      "doctor": null,
+      "estado": null
+    },
+    {
+      "usuario": null,
+      "fecha": null,
+      "mascota": "Lucky",
+      "doctor": null,
+      "estado": null
+    }
+  ]
+}

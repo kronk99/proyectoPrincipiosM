@@ -25,4 +25,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.Run("http://*:5020");
+app.Run("http://*:5276");
