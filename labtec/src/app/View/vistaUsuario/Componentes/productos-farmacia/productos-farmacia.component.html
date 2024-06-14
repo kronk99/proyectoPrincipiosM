@@ -11,7 +11,7 @@
       <button   mat-raised-button   class="custom-background" (click)="mostrarFarmacia(2)">
         Ordenar por nombre
       </button>
-      <button   mat-raised-button   class="custom-background" >
+      <button  (click)="openCarritoModal()" mat-raised-button   class="custom-background" >
         mi carrito
       </button>
     </div>
@@ -28,7 +28,7 @@
             </div>
             <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
               <h4 class="">{{producto.description}}</h4>
-              <button mat-raised-button color="accent" >Añadir al carrito</button>
+              <button mat-raised-button color="accent" (click)="agregarAlCarrito(producto)">Añadir al carrito</button>
             </div>
           </div>
         </mat-card-content>

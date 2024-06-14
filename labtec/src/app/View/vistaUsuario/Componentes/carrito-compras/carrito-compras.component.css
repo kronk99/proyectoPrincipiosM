@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  width: 600px; /* Ancho del modal */
+}
+
+mat-dialog-content {
+  max-height: 60vh; /* Altura máxima para la lista de productos */
+  overflow-y: auto; /* Habilitar desplazamiento vertical si la lista es demasiado larga */
+}
+
+mat-dialog-actions {
+  justify-content: space-between; /* Distribuir los botones a los extremos */
+}
+
+.mat-dialog-actions {
+  padding: 24px; /* Aumentar el espacio alrededor de los botones */
+}
+
+.mat-dialog-actions button {
+  margin-left: 8px; /* Espacio entre los botones */
+}
+mat-list-item {
+  width: 100%; /* Ocupar todo el espacio disponible */
+  padding-top: 10px; /* Agregar espacio encima de cada elemento */
+  padding-bottom: 10px; /* Agregar espacio debajo de cada elemento */
+}
+h1 {
+  margin-bottom: 20px; /* Agregar margen inferior al encabezado */
+}
+
+mat-list-item:first-child {
+  margin-top: 20px; /* Agregar margen superior solo al primer elemento de la lista */
+}
+
+mat-dialog-actions {
+  display: flex; /* Utilizar flexbox para controlar la alineación */
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  margin-top: 60px; /* Agregar espacio en la parte superior */
+}
+

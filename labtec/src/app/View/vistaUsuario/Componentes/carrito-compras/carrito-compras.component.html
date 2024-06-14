@@ -1,1 +1,17 @@
-<p>carrito-compras works!</p>
+<mat-dialog-content>
+  <h1>Carrito de compras</h1>
+  <mat-list>
+    <mat-list-item *ngFor="let item of data.carrito">
+      <p matLine>{{ item.name }}</p>
+      <p matLine>{{ item.precio }} </p>
+    </mat-list-item>
+  </mat-list>
+  <mat-radio-group [(ngModel)]="tipoPago">
+    <mat-radio-button value="transferencia">Transferencia</mat-radio-button>
+    <mat-radio-button value="tarjeta">Tarjeta</mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions >
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="{tipoPago: tipoPago}" cdkFocusInitial>Comprar</button>
+</mat-dialog-actions>
