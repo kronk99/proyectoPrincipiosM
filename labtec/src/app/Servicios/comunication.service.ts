@@ -41,6 +41,9 @@ export class ComunicationService {
     return this.http.get<any>(`${this.servidorURL}/verificarLogin?correo=${Correo}&contrasena=${Contrasena}`);
   }
   //FIN METODOS LOGIN*************
+  getFacturas(Usuario: string ): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getFacturas?id=${Usuario}`);
+  }
 
   //****METODOS PARA LAS CITAS DE USUARIO*****
   getCitas(Usuario: string ): Observable<any> {
@@ -76,6 +79,9 @@ export class ComunicationService {
   //INICIO METODOS FARMACIA DEL USUARIO*************
   getFarmacia(numero:number): Observable<any> {
     return this.http.get<any>(`${this.servidorURL}/getFarmacia?tipoGet=${numero}`);
+  }
+  getTienda(numero:number): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getTienda?tipoGet=${numero}`);
   }
   //FIN METODOS MASCOTAS DEL USUARIO*************
   solicitarReservaP(reservaPdata: any): Observable<any> {

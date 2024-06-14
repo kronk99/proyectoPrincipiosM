@@ -11,6 +11,7 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatToolbar} from "@angular/material/toolbar";
+import {ComunicationService} from "../../../../Servicios/comunication.service";
 export interface Citas {
   idFactura: string;
   nombre: string;
@@ -61,4 +62,20 @@ export class HistorialComprasComponent {
     }
 
   ];
+  constructor(private servicio:ComunicationService) {
+  }
+  obtenerFacturas(){//metodo que solicita del servidor todos los activos disponibles
+    //para reservar.
+    this.servicio.getFacturas(this.servicio.getUsuarioId()).subscribe(
+      response => {
+        console.log('Datos enviados al servidor:', response);
+
+        this.dataSource = response;
+      },
+      error => {
+        console.error('Error al enviar datos al servidor:', error);
+        // Maneja el error adecuadamente aquí
+      }
+    );
+  }
 }

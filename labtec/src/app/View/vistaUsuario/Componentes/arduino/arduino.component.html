@@ -1,0 +1,8 @@
+<div>
+  <h1>{{ mensajeMascota }}</h1>
+  <div *ngFor="let boton of botones" class="boton">
+    <button (click)="botonPresionado(boton.numero)">{{ boton.numero }}</button>
+    <p *ngIf="botonSeleccionado === boton.numero">{{ boton.mensaje }}</p>
+  </div>
+  <button (click)="conectarArduino()">Conectar con Arduino</button>
+</div>

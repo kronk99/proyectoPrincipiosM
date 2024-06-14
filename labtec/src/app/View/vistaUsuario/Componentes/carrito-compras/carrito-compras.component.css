@@ -23,6 +23,15 @@ mat-list-item {
   width: 100%; /* Ocupar todo el espacio disponible */
   padding-top: 10px; /* Agregar espacio encima de cada elemento */
   padding-bottom: 10px; /* Agregar espacio debajo de cada elemento */
+  min-height: 60px; /* Ajusta la altura mínima del mat-list-item */
+  display: flex; /* Utiliza flexbox para controlar el diseño */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+mat-list-item p {
+  margin: 0; /* Elimina el margen predeterminado de los párrafos */
+  overflow: hidden; /* Evita que el texto se desborde */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos al final del texto si se desborda */
+  white-space: nowrap; /* Evita que el texto se envuelva */
 }
 h1 {
   margin-bottom: 20px; /* Agregar margen inferior al encabezado */

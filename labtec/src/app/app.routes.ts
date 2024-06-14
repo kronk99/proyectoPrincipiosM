@@ -10,6 +10,7 @@ import {
 } from "./View/vistaUsuario/Componentes/productos-farmacia/productos-farmacia.component";
 import {HistorialComprasComponent} from "./View/vistaUsuario/Componentes/historial-compras/historial-compras.component";
 import {TiendaComponent} from "./View/vistaUsuario/Componentes/tienda/tienda.component";
+import {ArduinoComponent} from "./View/vistaUsuario/Componentes/arduino/arduino.component";
 
 export const routes: Routes = [
   {path: 'sidenav', component: SidenavComponent,
@@ -17,7 +18,8 @@ export const routes: Routes = [
       {path: 'mascotasUsuario',component:MascotasUsuarioComponent},
       {path:'expMedico',component: ExpedienteMedicoComponent},
       {path:'prodFarma',component: ProductosFarmaciaComponent},
-      {path:'facturas',component: HistorialComprasComponent}
+      {path:'facturas',component: HistorialComprasComponent},
+      {path:'arduino',component: ArduinoComponent}
     ]},
   {path: 'login', component: LoginComponent},
   {path: 'tienda', component: TiendaComponent},

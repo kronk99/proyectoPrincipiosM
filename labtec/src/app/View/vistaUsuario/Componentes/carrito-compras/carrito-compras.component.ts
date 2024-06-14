@@ -38,7 +38,7 @@ export class CarritoComprasComponent {
 
   constructor(private servicio:ComunicationService,@Inject(MAT_DIALOG_DATA) public data: { carrito: carrito[] }) { }
   comprar(): void{
-    
+
   }
 }
 
