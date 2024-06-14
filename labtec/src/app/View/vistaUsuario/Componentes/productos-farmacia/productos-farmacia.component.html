@@ -2,13 +2,13 @@
   <mat-toolbar  class="custom-background3">
     <span style="margin-right: auto;">Articulos de farmacia</span>
     <div class="contenedorBotones">
-      <button   mat-raised-button   class="custom-background"  >
+      <button   mat-raised-button   class="custom-background" (click)="mostrarFarmacia(0)" >
         Mostrar articulos
       </button>
-      <button   mat-raised-button   class="custom-background" >
+      <button   mat-raised-button   class="custom-background" (click)="mostrarFarmacia(1)" >
         Ordenar por precio
       </button>
-      <button   mat-raised-button   class="custom-background" >
+      <button   mat-raised-button   class="custom-background" (click)="mostrarFarmacia(2)">
         Ordenar por nombre
       </button>
       <button   mat-raised-button   class="custom-background" >
@@ -24,6 +24,7 @@
             <div fxFlex="40%">
               <img [src]="producto.imageURL" class="imagen-contenedor" alt="notfout">
               <p class="">{{producto.name}}</p>
+              <p class="">{{producto.precio}}</p>
             </div>
             <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
               <h4 class="">{{producto.description}}</h4>

@@ -3,7 +3,7 @@
   <mat-toolbar  class="custom-background3" >
     <span style="margin-right: auto;">Mascotas del usuario</span>
     <div class="contenedorBotones">
-      <button   mat-raised-button   class="custom-background"  >
+      <button (click)="mostrarMascotas()"  mat-raised-button   class="custom-background"  >
         ver mis mascotas
       </button>
     </div>
@@ -19,7 +19,7 @@
             </div>
             <div fxFlex="60%" fxLayout="column" fxLayoutAlign="end">
               <h4 class="">{{mascota.description}}</h4>
-              <button mat-raised-button color="accent" >información adicional</button>
+
             </div>
           </div>
         </mat-card-content>

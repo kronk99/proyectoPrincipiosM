@@ -96,11 +96,11 @@ export class ExpedienteMedicoComponent {
   //constructor de la clase
   constructor(private servicio:ComunicationService,private matDialog:MatDialog) { //se inyecta matdialog al constructor
   }
-  //metodo que solicita los activos disponibles del usuario en la bd
-  mostrarActivos(){
+  //metodo que solicita los expedientes disponibles del usuario en la bd
+  mostrarExpediente(){
     //este get se le manda el username o id del operador para traer los datos de la
     //bd
-    this.servicio.getaprobarSolicitud("hola").subscribe(
+    this.servicio.getExpediente(this.servicio.getUsuarioId()).subscribe(
       response => {
         console.log('Datos enviados al servidor:', response);
 

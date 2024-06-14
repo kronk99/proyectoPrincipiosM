@@ -36,11 +36,11 @@ export class ComunicationService {
   getaprobarSolicitud(username:string): Observable<any> {
     return this.http.get<any>(`${this.servidorURL}/getsolAprob?username=${username}`);
   }
-  //métodos para el login
+  //INICIO METODOS LOGIN*****
   verifyLogin(Correo: string , Contrasena: string): Observable<any> {
     return this.http.get<any>(`${this.servidorURL}/verificarLogin?correo=${Correo}&contrasena=${Contrasena}`);
   }
-  //fin de los metodos para el login..
+  //FIN METODOS LOGIN*************
 
   //****METODOS PARA LAS CITAS DE USUARIO*****
   getCitas(Usuario: string ): Observable<any> {
@@ -57,11 +57,27 @@ export class ComunicationService {
 
   //FIN METODOS CITAS USUARIOS*******
 
-  //POST****************************************************************
 
-  //solicitud reserva activos estudiantes.
+  //INICIO METODOS MASCOTAS DEL USUARIO*************
+  getMascotas(Usuario: string ): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getMascotas?id=${Usuario}`);
+  }
 
-  //solicitud reserva para profesores
+  //FIN METODOS MASCOTAS DEL USUARIO*************
+
+  //INICIO METODOS EXPEDIENTE DEL USUARIO*************
+  getExpediente(Usuario: string ): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getExpediente?id=${Usuario}`);
+  }
+
+  //FIN METODOS EXPEDIENTE DEL USUARIO*************
+
+
+  //INICIO METODOS FARMACIA DEL USUARIO*************
+  getFarmacia(numero:number): Observable<any> {
+    return this.http.get<any>(`${this.servidorURL}/getFarmacia?tipoGet=${numero}`);
+  }
+  //FIN METODOS MASCOTAS DEL USUARIO*************
   solicitarReservaP(reservaPdata: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

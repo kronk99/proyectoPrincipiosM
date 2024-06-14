@@ -14,6 +14,7 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ComunicationService} from "../../../../Servicios/comunication.service";
 import {FormActivosComponent} from "../form-activos/form-activos.component";
+import {NgIf} from "@angular/common";
 export interface Citas {
   fecha: string;
   mascota: string;
@@ -37,7 +38,8 @@ export interface Citas {
     MatRowDef,
     MatTable,
     MatToolbar,
-    MatHeaderCellDef
+    MatHeaderCellDef,
+    NgIf
   ],
   templateUrl: './historial-citas.component.html',
   styleUrl: './historial-citas.component.css'

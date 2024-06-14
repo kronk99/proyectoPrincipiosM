@@ -93,16 +93,17 @@ export class MascotasUsuarioComponent {
     //en formActivosComponent. y el ancho del dialog
 
   }*/
-  /*
+
   //Constructor de la clase, se le inyecta el dialog, y el comunicationService.
-  constructor(private matDialog:MatDialog , private servicio:ComunicationService) {}//se inyecta el servicio
-  mostrarActivos(){//metodo que solicita del servidor todos los activos disponibles
+  //private matDialog:MatDialog
+  constructor( private servicio:ComunicationService) {}//se inyecta el servicio
+  mostrarMascotas(){//metodo que solicita del servidor todos los activos disponibles
     //para reservar.
-    this.servicio.getActivos().subscribe(
+    this.servicio.getMascotas(this.servicio.getUsuarioId()).subscribe(
       response => {
         console.log('Datos enviados al servidor:', response);
 
-        this.activosRecibidos = response;
+        this.mascotasRecibidas = response;
       },
       error => {
         console.error('Error al enviar datos al servidor:', error);
@@ -114,5 +115,5 @@ export class MascotasUsuarioComponent {
 // Para cerrar el modal
 
 //metodo ngOninit , ejecuta al inicio
-*/
+
 }
