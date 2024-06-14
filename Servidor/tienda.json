@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "Advantix",
+        "description": "Antiparasitario externo para perros",
+        "imageURL": "https://th.bing.com/th/id/OIP.j1199WmuIjk1ZrhU47k9AAHaHa?rs=1&pid=ImgDetMain",
+        "precio":5100
+    },
+    {
+        "id": "2",
+        "name": "Frontline",
+        "description": "Antiparasitario externo para gatos",
+        "imageURL": "https://static.petnautasloja.com.br/public/nunesagropecuaria/imagens/produtos/biotril-512mg-9127.jpg",
+        "precio":5000
+      },
+      {
+        "id": "3",
+        "name": "Cama ",
+        "description": "cama perros y gatos",
+        "imageURL": "https://images-na.ssl-images-amazon.com/images/I/81tTMQyCNZL._AC_SL1500_.jpg",
+        "precio":4350
+      },
+      {
+        "id": "4",
+        "name": "Juguete hueso",
+        "description": "hueso de goma para perros",
+        "imageURL": "https://th.bing.com/th/id/OIP.KMGEHmddZub3f2mdyrZhEgHaDa?rs=1&pid=ImgDetMain",
+        "precio":4500
+      },
+      {
+        "id": "5",
+        "name": "Dog show",
+        "description": "Alimento premium para perros ",
+        "imageURL": "https://i5.walmartimages.com/asr/1b755bb3-31f2-41b2-a25a-55881bf03337.2b6c7ee9d4ce2656ff66520bc251ada7.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+        "precio":3000
+      }
+]

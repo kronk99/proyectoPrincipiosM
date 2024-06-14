@@ -1,0 +1,28 @@
+{
+    "luis": [
+        {
+            "idFactura": "FV2024001",
+            "nombre": "Comida seca para perros Royal Canin Veterinary Diet Canine Urinary SO",
+            "precio": "5000",
+            "cantidad": "2"
+          },
+          {
+            "idFactura": "FV2024002",
+            "nombre": "Comida seca para gatos Hill's Prescription Diet c/d Multicare Urinary Care con pollo",
+            "precio": "5300",
+            "cantidad": "1"
+          },
+          {
+            "idFactura": "FV2024003",
+            "nombre": "Suplemento Vetoquinol Zylkene Behavior Support Capsules para perros y gatos pequeños",
+            "precio": "4200",
+            "cantidad": "3"
+          },
+          {
+            "idFactura": "FV2024004",
+            "nombre": "Pasta de dientes enzimática C.E.T. para perros y gatos",
+            "precio": "3600",
+            "cantidad": "2"
+          }
+  ]
+}

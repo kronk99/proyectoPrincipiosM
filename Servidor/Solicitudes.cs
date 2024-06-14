@@ -51,6 +51,25 @@ namespace Tiposdeplatos
                 return NotFound(); // Devuelve 404 si el usuario no tiene citas
             }
         }
+        [Route("getFacturas")] //ruta getActivos, obtiene la lista
+        //de todos los activos disponibles
+        public ActionResult<IEnumerable<facturasTemplate>> getFactura(string id)
+        {//obtiene
+        //del servidor
+            string filePath = "facturas.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            Dictionary<string, List<facturasTemplate>> mascotasPorUsuario = JsonConvert.DeserializeObject<Dictionary<string, List<facturasTemplate>>>(jsonText);
+
+            if (mascotasPorUsuario.ContainsKey(id))
+            {
+                List<facturasTemplate> mascotasDelUsuario = mascotasPorUsuario[id];
+                return Ok(mascotasDelUsuario);
+            }
+            else
+            {
+                return NotFound(); // Devuelve 404 si el usuario no tiene citas
+            }
+        }
         [Route("getExpediente")] //ruta getActivos, obtiene la lista
         //de todos los activos disponibles
         public ActionResult<IEnumerable<expedienteTemplate>> getExpediente(string id)
@@ -78,6 +97,35 @@ namespace Tiposdeplatos
             string filePath = "farmacia.json";
             string jsonText = System.IO.File.ReadAllText(filePath);
             List<farmaciaTemplate> farmaciaList = JsonConvert.DeserializeObject<List<farmaciaTemplate>>(jsonText);
+
+            switch (tipoGet)
+            {
+                case 0:
+                // No se realiza ningún ordenamiento, se devuelve la lista tal como está
+                    break;
+                case 1:
+                // Ordena la lista por precio de forma descendente (más alto primero)
+                    farmaciaList = farmaciaList.OrderByDescending(f => f.precio).ToList();
+                    break;
+                case 2:
+            // Ordena la lista por nombre en orden alfabético
+                    farmaciaList = farmaciaList.OrderBy(f => f.name).ToList();
+                    break;
+                default:
+            // Si el tipoGet no es 0, 1 o 2, devuelve un BadRequest
+                return BadRequest("Tipo de ordenamiento no válido.");
+            }
+
+            return Ok(farmaciaList);
+        }
+        [Route("getTienda")] //ruta getActivos, obtiene la lista
+        //de todos los activos disponibles
+        public ActionResult<IEnumerable<tiendaTemplate>> getFarmacia(int tipoGet)
+        {//obtiene
+        //del servidor
+            string filePath = "tienda.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            List<tiendaTemplate> farmaciaList = JsonConvert.DeserializeObject<List<tiendaTemplate>>(jsonText);
 
             switch (tipoGet)
             {
