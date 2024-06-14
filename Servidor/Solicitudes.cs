@@ -32,6 +32,73 @@ namespace Tiposdeplatos
                 return NotFound(); // Devuelve 404 si el usuario no tiene citas
             }
         }
+        [Route("getMascotas")] //ruta getActivos, obtiene la lista
+        //de todos los activos disponibles
+        public ActionResult<IEnumerable<mascotasTemplate>> getMascota(string id)
+        {//obtiene
+        //del servidor
+            string filePath = "mascotas.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            Dictionary<string, List<mascotasTemplate>> mascotasPorUsuario = JsonConvert.DeserializeObject<Dictionary<string, List<mascotasTemplate>>>(jsonText);
+
+            if (mascotasPorUsuario.ContainsKey(id))
+            {
+                List<mascotasTemplate> mascotasDelUsuario = mascotasPorUsuario[id];
+                return Ok(mascotasDelUsuario);
+            }
+            else
+            {
+                return NotFound(); // Devuelve 404 si el usuario no tiene citas
+            }
+        }
+        [Route("getExpediente")] //ruta getActivos, obtiene la lista
+        //de todos los activos disponibles
+        public ActionResult<IEnumerable<expedienteTemplate>> getExpediente(string id)
+        {//obtiene
+        //del servidor
+            string filePath = "expediente.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            Dictionary<string, List<expedienteTemplate>> expedientePorUsuario = JsonConvert.DeserializeObject<Dictionary<string, List<expedienteTemplate>>>(jsonText);
+
+            if (expedientePorUsuario.ContainsKey(id))
+            {
+                List<expedienteTemplate> expedienteDelUsuario = expedientePorUsuario[id];
+                return Ok(expedienteDelUsuario);
+            }
+            else
+            {
+                return NotFound(); // Devuelve 404 si el usuario no tiene citas
+            }
+        }
+        [Route("getFarmacia")] //ruta getActivos, obtiene la lista
+        //de todos los activos disponibles
+        public ActionResult<IEnumerable<farmaciaTemplate>> getFarmacia(int tipoGet)
+        {//obtiene
+        //del servidor
+            string filePath = "farmacia.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);
+            List<farmaciaTemplate> farmaciaList = JsonConvert.DeserializeObject<List<farmaciaTemplate>>(jsonText);
+
+            switch (tipoGet)
+            {
+                case 0:
+                // No se realiza ningún ordenamiento, se devuelve la lista tal como está
+                    break;
+                case 1:
+                // Ordena la lista por precio de forma descendente (más alto primero)
+                    farmaciaList = farmaciaList.OrderByDescending(f => f.precio).ToList();
+                    break;
+                case 2:
+            // Ordena la lista por nombre en orden alfabético
+                    farmaciaList = farmaciaList.OrderBy(f => f.name).ToList();
+                    break;
+                default:
+            // Si el tipoGet no es 0, 1 o 2, devuelve un BadRequest
+                return BadRequest("Tipo de ordenamiento no válido.");
+            }
+
+            return Ok(farmaciaList);
+        }
         [Route("verificarLogin")] //metodo que verifica el login de usuario
         public ActionResult<bool> ComprobarLogin(string correo, string contrasena){
             //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);

@@ -5,5 +5,9 @@
   {
     "correo": "maria@example.com",
     "contrasena": "securepassword"
+  },
+  {
+    "correo": "luis",
+    "contrasena": "123"
   }
 ]

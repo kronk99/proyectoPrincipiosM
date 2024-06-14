@@ -1,0 +1,36 @@
+{
+    "luis": [
+        {
+            "fecha": "2024-05-26",
+            "mascota": "coco",
+            "doctor": "Dr. Rodríguez",
+            "medicamento": "Paracetamol",
+            "procedimiento": "Vacunación",
+            "detalle": "Vacuna contra la rabia"
+          },
+          {
+            "fecha": "2024-05-28",
+            "mascota": "coco",
+            "doctor": "Dr. Madrigal",
+            "medicamento": "Ivermectina",
+            "procedimiento": "Desparasitación",
+            "detalle": "Dosis única oral"
+          },
+          {
+            "fecha": "2024-06-02",
+            "mascota": "coco",
+            "doctor": "Dr. Gómez",
+            "medicamento": "Amoxicilina",
+            "procedimiento": "Tratamiento",
+            "detalle": "Dosis contra el dolor de estómago"
+          },
+          {
+            "fecha": "2024-06-05",
+            "mascota": "Lucky",
+            "doctor": "Dr. Sánchez",
+            "medicamento": "Prednisona",
+            "procedimiento": "Terapia",
+            "detalle": "Inflamación en la piel"
+          }
+  ]
+}

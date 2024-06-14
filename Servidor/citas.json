@@ -1,11 +1,11 @@
 {
-  "pedro@example.com": [
+  "luis": [
     {
       "usuario": null,
-      "fecha": "2024-06-15",
-      "mascota": "Luna",
+      "fecha": "2022-06-15",
+      "mascota": "coco",
       "doctor": "Dr. García",
-      "estado": "Pendiente"
+      "estado": "Completada"
     }
   ],
   "otroUsuario": [
