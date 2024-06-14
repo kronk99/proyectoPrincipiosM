@@ -9,5 +9,14 @@
   {
     "correo": "luis",
     "contrasena": "123"
+  },
+  {
+    "id": "AAAAAAAA",
+    "email": "adminA@e.com",
+    "password": "123",
+    "name": "Adriel S",
+    "firstName": "Chaves",
+    "lastName": "Salazar",
+    "role": "admin"
   }
 ]

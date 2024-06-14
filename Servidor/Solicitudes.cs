@@ -132,6 +132,39 @@ namespace Tiposdeplatos
                 return false;
             }
         }
+        [Route("verificarLoginAdminVet")] //metodo que verifica el login de usuario
+        public ActionResult<bool> ComprobarLoginVetAdmin(string email, string password){
+            //platilloTemplate json = JsonConvert.DeserializeObject<platilloTemplate>(nombrePlatillos);
+            //Console.Write(nuevoplatillo.Tipo);
+            string filePath = "login.json";
+            string jsonText = System.IO.File.ReadAllText(filePath);//lee todo el archivo
+            List<userAdminVetTemplate> registros = JsonConvert.DeserializeObject<List<userAdminVetTemplate>>(jsonText);
+            userAdminVetTemplate usuario = registros.FirstOrDefault(u => u.email == email); 
+            bool valorReturn = verificarCredencialesAdminVet(usuario,password);
+            Console.WriteLine("valor del login:",valorReturn);
+            return Ok(valorReturn);
+        }
+        public bool verificarCredencialesAdminVet(userAdminVetTemplate usuario ,string password){
+            if(usuario != null){//si el usuario existe
+                if(usuario.password == password){//si la contraseña es igual retorna 1
+                    Console.WriteLine(usuario.password);
+                    Console.WriteLine(password);
+                    Console.WriteLine("contraseña valida");
+                    return true;
+                }
+                else{//si no es igual, retorna false
+                    Console.WriteLine("contraseña erronea");
+                    Console.WriteLine(usuario.password);
+                    Console.WriteLine(password);
+                    return false;// si no , retorna 0
+                    
+                }
+            }
+            else{//si no lo encuentra, el usuario no existe
+                Console.WriteLine("usuario no existe");
+                return false;
+            }
+        }
         [HttpPost]
         [Route("deleteCitas")]
         public ActionResult<bool> borrarCita([FromBody] citasTemplate citaABorrar){
